@@ -7,7 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Sellearn" />
-        <module name="sellenium" />
+        <module name="Selenium_WebDriver_Java_TestNG" />
       </profile>
     </annotationProcessing>
   </component>
