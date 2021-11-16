@@ -1,6 +1,8 @@
 package com.gmail.theinternet;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
@@ -22,13 +24,21 @@ public class PositiveTests {
         driver.manage().window().maximize();
 
         //enter user name
+        WebElement username = driver.findElement(By.id("username"));
+        username.sendKeys("tomsmith");
         //enter password
+        WebElement password = driver.findElement(By.name("password"));
+        password.sendKeys("SuperSecretPassword!");
         //click login button
+        WebElement logInButton = driver.findElement(By.tagName("Button"));
+        logInButton.click();
 
          // verifications;
          // new url
-          //logout button is visible
-          //successful login message
+        //logout button is visible
+        WebElement logOutInButton = driver.findElement(By.xpath("//a[@class='button secondary radius']"));
+        //successful login message
+        WebElement successMessage = driver.findElement(By.cssSelector("#flash"));
         //Close browser
         driver.quit();
 
