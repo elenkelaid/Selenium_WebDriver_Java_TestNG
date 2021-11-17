@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class PositiveTests {
@@ -33,8 +34,11 @@ public class PositiveTests {
         WebElement logInButton = driver.findElement(By.tagName("Button"));
         logInButton.click();
 
-         // verifications;
-         // new url
+        // verifications:
+        // new url
+        String expectedUrl = "https://the-internet.herokuapp.com/secure";
+        String actualUrl =driver.getCurrentUrl();
+        Assert.assertEquals(actualUrl, expectedUrl,"Actual page url is not the same as expected");
         //logout button is visible
         WebElement logOutInButton = driver.findElement(By.xpath("//a[@class='button secondary radius']"));
         //successful login message
