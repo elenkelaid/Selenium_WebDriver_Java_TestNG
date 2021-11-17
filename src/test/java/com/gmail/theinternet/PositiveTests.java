@@ -1,5 +1,6 @@
 package com.gmail.theinternet;
 
+import com.sun.source.tree.AssertTree;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,11 +10,11 @@ import org.testng.annotations.Test;
 
 public class PositiveTests {
     @Test
-    public void loginTest(){
+    public void loginTest() {
 
         System.out.println("Starting loginTest");
         //Create driver
-        System.setProperty("webdriver.chrome.driver","src/main/resources/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
 
         //open test page
@@ -37,12 +38,23 @@ public class PositiveTests {
         // verifications:
         // new url
         String expectedUrl = "https://the-internet.herokuapp.com/secure";
-        String actualUrl =driver.getCurrentUrl();
-        Assert.assertEquals(actualUrl, expectedUrl,"Actual page url is not the same as expected");
+        String actualUrl = driver.getCurrentUrl();
+        Assert.assertEquals(actualUrl, expectedUrl, "Actual page url is not the same as expected");
+
         //logout button is visible
         WebElement logOutInButton = driver.findElement(By.xpath("//a[@class='button secondary radius']"));
+        Assert.assertTrue(logOutInButton.isDisplayed(), "Log Out Button is not Visible!");
+
         //successful login message
         WebElement successMessage = driver.findElement(By.cssSelector("#flash"));
+       // String expectedMessage = "You logged into a secure area!";
+           String expectedMessage ="You logged into a secure area!\n" +
+                "×";
+        String actualMessage = successMessage.getText();
+        Assert.assertEquals(actualMessage,expectedMessage, "Log Out Button is not Visible!");
+      /*  Assert.assertTrue(actualMessage.contains(expectedMessage), "Actual message does not contain expected message.\n ActualMessage: "
+                + actualMessage +"\nExpected Message: "+ expectedMessage);*/
+
         //Close browser
         driver.quit();
 
