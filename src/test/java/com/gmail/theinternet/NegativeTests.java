@@ -55,7 +55,7 @@ public class NegativeTests {
         driver.quit();
     }
 
-    @Test(priority = 2)
+    @Test(priority = 2, enabled = false)
     public void incorrectPasswordTest() {
         System.out.println("Starting incorrectPasswordTest");
 
